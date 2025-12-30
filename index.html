@@ -18,11 +18,11 @@ body{
   color:#333;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
   background:#000;
   color:#fff;
-  padding:15px 40px;
+  padding:15px 30px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -40,77 +40,52 @@ nav a{
   font-weight:bold;
 }
 
-/* ===== HERO / COLLAGE BANNER ===== */
+/* HERO */
 .hero{
   position:relative;
   width:100%;
-  height:500px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+}
+
+.hero img{
+  width:100%;
+  height:auto;
+  display:block;
 }
 
 .hero-text{
   position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
   color:#fff;
-  z-index:10;
+  background:rgba(0,0,0,0.4);
 }
 
-.hero-text h2{
-  font-size:40px;
-  margin-bottom:10px;
-}
-
-.hero-text p{
-  font-size:20px;
-  margin-bottom:20px;
-}
+.hero-text h2{ font-size:38px; }
+.hero-text p{ font-size:18px; margin:10px 0; }
 
 .hero-text button{
+  padding:14px 32px;
   background:gold;
   border:none;
-  padding:15px 35px;
-  font-weight:bold;
   border-radius:6px;
+  font-weight:bold;
   cursor:pointer;
 }
 
-/* COLLAGE SLIDER */
-.collage-slider{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-}
-
-.collage-slider img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
-  transition:1s;
-}
-
-.collage-slider img.active{
-  opacity:1;
-}
-
-/* ===== PRODUCTS ===== */
+/* PRODUCTS */
 .products{
-  padding:60px 40px;
+  padding:50px 25px;
 }
 
 .products h2{
   text-align:center;
-  margin-bottom:40px;
+  margin-bottom:35px;
 }
 
-/* 1 ROW = 3 ITEMS */
 .product-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -121,43 +96,27 @@ nav a{
   background:#fff;
   border-radius:14px;
   overflow:hidden;
-  box-shadow:0 10px 20px rgba(0,0,0,0.12);
-  transition:0.3s;
+  box-shadow:0 8px 18px rgba(0,0,0,0.12);
 }
 
-.product:hover{
-  transform: translateY(-5px);
-}
-
-/* PRODUCT SLIDER BOX */
+/* IMAGE = BOX SIZE */
 .slider{
-  position:relative;
-  width:570px;
-  height:570px;
-  margin:0 auto;
-  background:#fff;
-  overflow:hidden;
-  border-radius:14px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  width:100%;
 }
 
 .slider img{
-  position:absolute;
-  inset:0;
   width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
-  transition:0.8s;
+  height:auto;
+  display:none;
 }
 
 .slider img.active{
-  opacity:1;
+  display:block;
 }
 
-/* PRODUCT INFO */
+/* INFO */
 .product-info{
-  padding:18px;
+  padding:16px;
 }
 
 .product-info span{
@@ -176,7 +135,7 @@ nav a{
   cursor:pointer;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
   background:#000;
   color:#fff;
@@ -184,20 +143,10 @@ footer{
   padding:25px;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
-@media(max-width:992px){
+/* MOBILE */
+@media(max-width:900px){
   .product-grid{
     grid-template-columns:repeat(2,1fr);
-  }
-
-  .slider{
-    width:100%;
-    height:auto;
-  }
-
-  .slider img{
-    position:relative;
-    height:auto;
   }
 }
 
@@ -205,14 +154,8 @@ footer{
   .product-grid{
     grid-template-columns:1fr;
   }
-
-  .hero-text h2{
-    font-size:28px;
-  }
-
-  .hero-text p{
-    font-size:16px;
-  }
+  .hero-text h2{ font-size:26px; }
+  .hero-text p{ font-size:15px; }
 }
 </style>
 </head>
@@ -227,11 +170,8 @@ footer{
   </nav>
 </header>
 
-<!-- ===== HERO / COLLAGE BANNER ===== -->
 <section class="hero">
-    <img src="FSFD.png">
-   
-
+  <img src="FSFD.png">
   <div class="hero-text">
     <h2>Welcome to PRINT SHOP</h2>
     <p>Custom mugs, t-shirts, frames & more</p>
@@ -247,9 +187,9 @@ footer{
 <!-- PRODUCT 1 -->
 <div class="product">
   <div class="slider">
-    <img src="mug1.jpg" class="active" alt="Custom Mug 1">
-    <img src="mug2.jpg" alt="Custom Mug 2">
-    <img src="mug3.jpg" alt="Custom Mug 3">
+    <img src="mug1.jpg" class="active">
+    <img src="mug2.jpg">
+    <img src="mug3.jpg">
   </div>
   <div class="product-info">
     <h3>Custom Mug</h3>
@@ -262,12 +202,12 @@ footer{
 <!-- PRODUCT 2 -->
 <div class="product">
   <div class="slider">
-    <img src="tshart (1).jpg" class="active" alt="T-Shirt 1">
-    <img src="tshart (2).jpg" alt="T-Shirt 2">
-    <img src="tshart (3).jpg" alt="T-Shirt 3">
-    <img src="tshart (4).jpg" alt="T-Shirt 4">
-    <img src="tshart (5).jpg" alt="T-Shirt 5">
-    <img src="tshart (6).jpg" alt="T-Shirt 6">
+    <img src="tshart (1).jpg" class="active">
+    <img src="tshart (2).jpg">
+    <img src="tshart (3).jpg">
+    <img src="tshart (4).jpg">
+    <img src="tshart (5).jpg">
+    <img src="tshart (6).jpg">
   </div>
   <div class="product-info">
     <h3>T-Shirt Print</h3>
@@ -280,9 +220,9 @@ footer{
 <!-- PRODUCT 3 -->
 <div class="product">
   <div class="slider">
-    <img src="frame1.jpg" class="active" alt="Frame 1">
-    <img src="frame2.jpg" alt="Frame 2">
-    <img src="frame3.jpg" alt="Frame 3">
+    <img src="frame1.jpg" class="active">
+    <img src="frame2.jpg">
+    <img src="frame3.jpg">
   </div>
   <div class="product-info">
     <h3>Photo Frame</h3>
@@ -295,10 +235,10 @@ footer{
 <!-- PRODUCT 4 -->
 <div class="product">
   <div class="slider">
-    <img src="saree (1).jpg" class="active" alt="Saree 1">
-    <img src="saree (2).jpg" alt="Saree 2">
-    <img src="saree (3).jpg" alt="Saree 3">
-    <img src="saree (4).jpg" alt="Saree 4">
+    <img src="saree (1).jpg" class="active">
+    <img src="saree (2).jpg">
+    <img src="saree (3).jpg">
+    <img src="saree (4).jpg">
   </div>
   <div class="product-info">
     <h3>Custom Saree Printing</h3>
@@ -311,16 +251,15 @@ footer{
 <!-- PRODUCT 5 -->
 <div class="product">
   <div class="slider">
-    <img src="screen (1).jpg" class="active" alt="Saree 1">
-    <img src="screen (2).jpg" alt="Saree 2">
-    <img src="screen (3).jpg" alt="Saree 3">
-    <img src="screen(4).jpeg" alt="Saree 4">
+    <img src="screen (1).jpg" class="active">
+    <img src="screen (2).jpg">
+    <img src="screen (3).jpg">
+    <img src="screen(4).jpeg">
   </div>
   <div class="product-info">
-    <h3>Screen Printing frames</h3>
-    <p>  </p>
+    <h3>Screen Printing Frames</h3>
     <span>LKR 2500</span>
-    <button onclick="openPopup('Custom Saree Printing')">Order Now</button>
+    <button onclick="openPopup('Screen Printing Frames')">Order Now</button>
   </div>
 </div>
 
@@ -331,34 +270,19 @@ footer{
 © 2025 PRINT SHOP | 0712257210
 </footer>
 
-<!-- ===== ORDER POPUP ===== -->
+<!-- ORDER POPUP -->
 <div id="orderPopup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:999; align-items:center; justify-content:center;">
   <div style="background:#fff; padding:25px; width:320px; border-radius:10px;">
-    <h3 style="margin-bottom:15px;">Place Your Order</h3>
-
-    <input id="custName" type="text" placeholder="Full Name" required
-      style="width:100%; padding:10px; margin-bottom:10px;">
-
-    <input id="custMobile" type="tel" placeholder="Mobile Number" required
-      style="width:100%; padding:10px; margin-bottom:10px;">
-
-    <textarea id="custAddress" placeholder="Delivery Address" required
-      style="width:100%; padding:10px; margin-bottom:15px;"></textarea>
-
-    <button onclick="sendWhatsAppOrder()"
-      style="width:100%; padding:12px; background:#25D366; color:#fff; border:none; border-radius:6px; font-weight:bold;">
-      Send Order via WhatsApp
-    </button>
-
-    <button onclick="closePopup()"
-      style="width:100%; margin-top:10px; padding:10px; background:#ccc; border:none; border-radius:6px;">
-      Cancel
-    </button>
+    <h3>Place Your Order</h3><br>
+    <input id="custName" placeholder="Full Name" style="width:100%; padding:10px; margin-bottom:10px;">
+    <input id="custMobile" placeholder="Mobile Number" style="width:100%; padding:10px; margin-bottom:10px;">
+    <textarea id="custAddress" placeholder="Delivery Address" style="width:100%; padding:10px;"></textarea><br><br>
+    <button onclick="sendWhatsAppOrder()" style="width:100%; padding:12px; background:#25D366; color:#fff; border:none; border-radius:6px;">Send via WhatsApp</button>
+    <button onclick="closePopup()" style="width:100%; margin-top:8px;">Cancel</button>
   </div>
 </div>
 
 <script>
-/* ===== PRODUCT SLIDERS ===== */
 document.querySelectorAll(".slider").forEach(slider=>{
   let imgs = slider.querySelectorAll("img");
   let i = 0;
@@ -369,41 +293,22 @@ document.querySelectorAll(".slider").forEach(slider=>{
   },2500);
 });
 
-/* ===== COLLAGE SLIDER ===== */
-const collageSlider = document.querySelector(".collage-slider");
-let collageImgs = collageSlider.querySelectorAll("img");
-let c = 0;
-setInterval(()=>{
-  collageImgs[c].classList.remove("active");
-  c = Math.floor(Math.random() * collageImgs.length); // random image
-  collageImgs[c].classList.add("active");
-}, 2500);
+let selectedProduct="";
 
-/* ===== WHATSAPP ORDER ===== */
-let selectedProduct = "";
-
-function openPopup(product){
-  selectedProduct = product;
-  document.getElementById("orderPopup").style.display="flex";
+function openPopup(p){
+  selectedProduct=p;
+  orderPopup.style.display="flex";
 }
-
 function closePopup(){
-  document.getElementById("orderPopup").style.display="none";
+  orderPopup.style.display="none";
 }
-
 function sendWhatsAppOrder(){
-  let name = document.getElementById("custName").value.trim();
-  let mobile = document.getElementById("custMobile").value.trim();
-  let address = document.getElementById("custAddress").value.trim();
-
-  if(name=="" || mobile=="" || address==""){
+  if(!custName.value||!custMobile.value||!custAddress.value){
     alert("Please fill all details");
     return;
   }
-
-  let msg = `🛒 NEW ORDER%0A%0A📦 Product: ${selectedProduct}%0A👤 Name: ${name}%0A📞 Mobile: ${mobile}%0A🏠 Address: ${address}`;
-  let whatsappURL = `https://wa.me/94712257210?text=${msg}`;
-  window.open(whatsappURL, "_blank");
+  let msg=`NEW ORDER\nProduct: ${selectedProduct}\nName: ${custName.value}\nMobile: ${custMobile.value}\nAddress: ${custAddress.value}`;
+  window.open("https://wa.me/94712257210?text="+encodeURIComponent(msg));
 }
 </script>
 
