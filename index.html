@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PRINT SHOP | Online Printing Store</title>
 
-<meta name="description" content="PRINT SHOP – Order custom mugs, t-shirts, photo frames and printed gifts online. WhatsApp ordering available.">
-<meta name="keywords" content="printing shop Sri Lanka, custom mug printing, t-shirt printing, photo frames">
-<meta name="author" content="PRINT SHOP">
-
 <style>
 *{
   margin:0;
@@ -20,7 +16,6 @@
 body{
   background:#f5f5f5;
   color:#333;
-  line-height:1.6;
 }
 
 /* ===== HEADER ===== */
@@ -33,13 +28,10 @@ header{
   align-items:center;
   position:sticky;
   top:0;
-  z-index:1000;
+  z-index:100;
 }
 
-header h1{
-  color:gold;
-  font-size:24px;
-}
+header h1{ color:gold; }
 
 nav a{
   color:#fff;
@@ -48,36 +40,64 @@ nav a{
   font-weight:bold;
 }
 
-nav a:hover{
-  color:gold;
-}
-
-/* ===== HERO ===== */
+/* ===== HERO / COLLAGE BANNER ===== */
 .hero{
-  background:linear-gradient(to right,#ff0000,#3700ff);
-  color:#fff;
-  text-align:center;
-  padding:90px 20px;
+  position:relative;
+  width:100%;
+  height:500px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 }
 
-.hero h2{
-  font-size:42px;
+.hero-text{
+  position:absolute;
+  text-align:center;
+  color:#fff;
+  z-index:10;
+}
+
+.hero-text h2{
+  font-size:40px;
   margin-bottom:10px;
 }
 
-.hero p{
-  font-size:18px;
-  margin-bottom:25px;
+.hero-text p{
+  font-size:20px;
+  margin-bottom:20px;
 }
 
-.hero button{
+.hero-text button{
   background:gold;
   border:none;
   padding:15px 35px;
-  font-size:16px;
-  cursor:pointer;
-  border-radius:5px;
   font-weight:bold;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* COLLAGE SLIDER */
+.collage-slider{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+.collage-slider img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:1s;
+}
+
+.collage-slider img.active{
+  opacity:1;
 }
 
 /* ===== PRODUCTS ===== */
@@ -88,62 +108,72 @@ nav a:hover{
 .products h2{
   text-align:center;
   margin-bottom:40px;
-  font-size:32px;
 }
 
+/* 1 ROW = 3 ITEMS */
 .product-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(3,1fr);
   gap:25px;
 }
 
 .product{
   background:#fff;
-  border-radius:12px;
+  border-radius:14px;
   overflow:hidden;
-  box-shadow:0 10px 20px rgba(0,0,0,0.1);
-  transition:transform 0.3s;
+  box-shadow:0 10px 20px rgba(0,0,0,0.12);
+  transition:0.3s;
 }
 
 .product:hover{
-  transform:translateY(-8px);
+  transform: translateY(-5px);
 }
 
-.product img{
+/* PRODUCT SLIDER BOX */
+.slider{
+  position:relative;
+  width:570px;
+  height:570px;
+  margin:0 auto;
+  background:#fff;
+  overflow:hidden;
+  border-radius:14px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.slider img{
+  position:absolute;
+  inset:0;
   width:100%;
-  height:240px;
+  height:100%;
   object-fit:cover;
+  opacity:0;
+  transition:0.8s;
 }
 
+.slider img.active{
+  opacity:1;
+}
+
+/* PRODUCT INFO */
 .product-info{
   padding:18px;
 }
 
-.product-info h3{
-  margin-bottom:8px;
-}
-
-.product-info p{
-  font-size:14px;
-  margin-bottom:10px;
-}
-
 .product-info span{
-  font-weight:bold;
   color:green;
-  font-size:16px;
+  font-weight:bold;
 }
 
 .product-info button{
   width:100%;
   margin-top:12px;
-  padding:14px;
+  padding:12px;
   background:#000;
   color:#fff;
   border:none;
-  cursor:pointer;
   border-radius:6px;
-  font-weight:bold;
+  cursor:pointer;
 }
 
 /* ===== FOOTER ===== */
@@ -151,133 +181,38 @@ footer{
   background:#000;
   color:#fff;
   text-align:center;
-  padding:25px 15px;
-  margin-top:40px;
-  font-size:14px;
-}
-
-/* ===== WHATSAPP BUTTON ===== */
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  color:#fff;
-  padding:14px 22px;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:bold;
-  box-shadow:0 5px 15px rgba(0,0,0,0.3);
-  z-index:1500;
-}
-
-/* ===== MODAL ===== */
-#orderModal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.65);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-}
-
-.order-box{
-  background:#fff;
   padding:25px;
-  width:90%;
-  max-width:420px;
-  border-radius:12px;
-}
-
-.order-box h2{
-  margin-bottom:15px;
-  text-align:center;
-}
-
-.order-box input,
-.order-box textarea{
-  width:100%;
-  padding:12px;
-  margin-bottom:12px;
-  border:1px solid #ccc;
-  border-radius:6px;
-  font-size:14px;
-}
-
-.order-box button{
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.submit-btn{
-  background:#000;
-  color:#fff;
-}
-
-.cancel-btn{
-  background:#ccc;
-  margin-top:10px;
 }
 
 /* ===== MOBILE RESPONSIVE ===== */
-@media (max-width:768px){
-
-  header{
-    flex-direction:column;
-    padding:15px 20px;
+@media(max-width:992px){
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  nav{
-    margin-top:10px;
+  .slider{
+    width:100%;
+    height:auto;
   }
 
-  nav a{
-    margin:0 10px;
-    font-size:14px;
+  .slider img{
+    position:relative;
+    height:auto;
+  }
+}
+
+@media(max-width:600px){
+  .product-grid{
+    grid-template-columns:1fr;
   }
 
-  .hero{
-    padding:60px 15px;
-  }
-
-  .hero h2{
+  .hero-text h2{
     font-size:28px;
   }
 
-  .hero p{
+  .hero-text p{
     font-size:16px;
   }
-
-  .products{
-    padding:40px 20px;
-  }
-
-  .product img{
-    height:200px;
-  }
-
-}
-
-@media (max-width:480px){
-
-  .order-box{
-    width:95%;
-    padding:20px;
-  }
-
-  .whatsapp{
-    bottom:15px;
-    right:15px;
-    padding:12px 18px;
-    font-size:14px;
-  }
-
 }
 </style>
 </head>
@@ -285,113 +220,192 @@ footer{
 <body>
 
 <header>
-  <h1>PRINTING SHOP</h1>
+  <h1>PRINT SHOP</h1>
   <nav>
     <a href="#">Home</a>
     <a href="#shop">Shop</a>
-    <a href="#contact">Contact</a>
   </nav>
 </header>
 
+<!-- ===== HERO / COLLAGE BANNER ===== -->
 <section class="hero">
-  <h2>Printing Online Store</h2>
-  <p>High quality prints, gifts & fancy items</p>
-  <button onclick="scrollToShop()">Shop Now</button>
-</section>
+    <img src="FSFD.png">
+   
 
-<section class="products" id="shop">
-  <h2>Our Products</h2>
-
-  <div class="product-grid">
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f" alt="Custom Mug">
-      <div class="product-info">
-        <h3>Custom Mug</h3>
-        <p>High quality printed ceramic mug</p>
-        <span>LKR 850</span>
-        <button onclick="order('Custom Mug')">Order Now</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f" alt="T Shirt">
-      <div class="product-info">
-        <h3>T-Shirt Print</h3>
-        <p>Premium fabric custom t-shirt printing</p>
-        <span>LKR 2,500</span>
-        <button onclick="order('T-Shirt Print')">Order Now</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1503602642458-232111445657" alt="Photo Frame">
-      <div class="product-info">
-        <h3>Photo Frame</h3>
-        <p>Personalized photo frame printing</p>
-        <span>LKR 1,800</span>
-        <button onclick="order('Photo Frame')">Order Now</button>
-      </div>
-    </div>
-
+  <div class="hero-text">
+    <h2>Welcome to PRINT SHOP</h2>
+    <p>Custom mugs, t-shirts, frames & more</p>
+    <button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Now</button>
   </div>
 </section>
 
-<footer id="contact">
-  <p>© 2025 PRINT SHOP<br>WhatsApp Orders: <strong>071 225 7210</strong></p>
+<section class="products" id="shop">
+<h2>Our Products</h2>
+
+<div class="product-grid">
+
+<!-- PRODUCT 1 -->
+<div class="product">
+  <div class="slider">
+    <img src="mug1.jpg" class="active" alt="Custom Mug 1">
+    <img src="mug2.jpg" alt="Custom Mug 2">
+    <img src="mug3.jpg" alt="Custom Mug 3">
+  </div>
+  <div class="product-info">
+    <h3>Custom Mug</h3>
+    <p>Ceramic printed mug</p>
+    <span>LKR 850</span>
+    <button onclick="openPopup('Custom Mug')">Order Now</button>
+  </div>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="product">
+  <div class="slider">
+    <img src="tshart (1).jpg" class="active" alt="T-Shirt 1">
+    <img src="tshart (2).jpg" alt="T-Shirt 2">
+    <img src="tshart (3).jpg" alt="T-Shirt 3">
+    <img src="tshart (4).jpg" alt="T-Shirt 4">
+    <img src="tshart (5).jpg" alt="T-Shirt 5">
+    <img src="tshart (6).jpg" alt="T-Shirt 6">
+  </div>
+  <div class="product-info">
+    <h3>T-Shirt Print</h3>
+    <p>Premium fabric printing</p>
+    <span>LKR 2,500</span>
+    <button onclick="openPopup('T-Shirt Print')">Order Now</button>
+  </div>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="product">
+  <div class="slider">
+    <img src="frame1.jpg" class="active" alt="Frame 1">
+    <img src="frame2.jpg" alt="Frame 2">
+    <img src="frame3.jpg" alt="Frame 3">
+  </div>
+  <div class="product-info">
+    <h3>Photo Frame</h3>
+    <p>Personalized frames</p>
+    <span>LKR 1,800</span>
+    <button onclick="openPopup('Photo Frame')">Order Now</button>
+  </div>
+</div>
+
+<!-- PRODUCT 4 -->
+<div class="product">
+  <div class="slider">
+    <img src="saree (1).jpg" class="active" alt="Saree 1">
+    <img src="saree (2).jpg" alt="Saree 2">
+    <img src="saree (3).jpg" alt="Saree 3">
+    <img src="saree (4).jpg" alt="Saree 4">
+  </div>
+  <div class="product-info">
+    <h3>Custom Saree Printing</h3>
+    <p>Design Your Own Saree</p>
+    <span>LKR 3500</span>
+    <button onclick="openPopup('Custom Saree Printing')">Order Now</button>
+  </div>
+</div>
+
+<!-- PRODUCT 5 -->
+<div class="product">
+  <div class="slider">
+    <img src="screen (1).jpg" class="active" alt="Saree 1">
+    <img src="screen (2).jpg" alt="Saree 2">
+    <img src="screen (3).jpg" alt="Saree 3">
+    <img src="screen(4).jpeg" alt="Saree 4">
+  </div>
+  <div class="product-info">
+    <h3>Screen Printing frames</h3>
+    <p>  </p>
+    <span>LKR 2500</span>
+    <button onclick="openPopup('Custom Saree Printing')">Order Now</button>
+  </div>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2025 PRINT SHOP | 0712257210
 </footer>
 
-<a class="whatsapp" href="https://wa.me/94712257210" target="_blank">WhatsApp Order</a>
+<!-- ===== ORDER POPUP ===== -->
+<div id="orderPopup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:999; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:25px; width:320px; border-radius:10px;">
+    <h3 style="margin-bottom:15px;">Place Your Order</h3>
 
-<div id="orderModal">
-  <div class="order-box">
-    <h2>Order Details</h2>
-    <input type="hidden" id="productName">
-    <input id="fullName" placeholder="Full Name">
-    <input id="mobile" placeholder="Mobile Number">
-    <textarea id="address" rows="3" placeholder="Delivery Address"></textarea>
-    <button class="submit-btn" onclick="submitOrder()">Submit Order</button>
-    <button class="cancel-btn" onclick="closeForm()">Cancel</button>
+    <input id="custName" type="text" placeholder="Full Name" required
+      style="width:100%; padding:10px; margin-bottom:10px;">
+
+    <input id="custMobile" type="tel" placeholder="Mobile Number" required
+      style="width:100%; padding:10px; margin-bottom:10px;">
+
+    <textarea id="custAddress" placeholder="Delivery Address" required
+      style="width:100%; padding:10px; margin-bottom:15px;"></textarea>
+
+    <button onclick="sendWhatsAppOrder()"
+      style="width:100%; padding:12px; background:#25D366; color:#fff; border:none; border-radius:6px; font-weight:bold;">
+      Send Order via WhatsApp
+    </button>
+
+    <button onclick="closePopup()"
+      style="width:100%; margin-top:10px; padding:10px; background:#ccc; border:none; border-radius:6px;">
+      Cancel
+    </button>
   </div>
 </div>
 
 <script>
-function order(product){
-  document.getElementById("productName").value = product;
-  document.getElementById("orderModal").style.display = "flex";
+/* ===== PRODUCT SLIDERS ===== */
+document.querySelectorAll(".slider").forEach(slider=>{
+  let imgs = slider.querySelectorAll("img");
+  let i = 0;
+  setInterval(()=>{
+    imgs[i].classList.remove("active");
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add("active");
+  },2500);
+});
+
+/* ===== COLLAGE SLIDER ===== */
+const collageSlider = document.querySelector(".collage-slider");
+let collageImgs = collageSlider.querySelectorAll("img");
+let c = 0;
+setInterval(()=>{
+  collageImgs[c].classList.remove("active");
+  c = Math.floor(Math.random() * collageImgs.length); // random image
+  collageImgs[c].classList.add("active");
+}, 2500);
+
+/* ===== WHATSAPP ORDER ===== */
+let selectedProduct = "";
+
+function openPopup(product){
+  selectedProduct = product;
+  document.getElementById("orderPopup").style.display="flex";
 }
 
-function closeForm(){
-  document.getElementById("orderModal").style.display = "none";
+function closePopup(){
+  document.getElementById("orderPopup").style.display="none";
 }
 
-function submitOrder(){
-  const product = document.getElementById("productName").value;
-  const name = fullName.value.trim();
-  const mobile = mobile.value.trim();
-  const address = address.value.trim();
+function sendWhatsAppOrder(){
+  let name = document.getElementById("custName").value.trim();
+  let mobile = document.getElementById("custMobile").value.trim();
+  let address = document.getElementById("custAddress").value.trim();
 
-  if(!name || !mobile || !address){
-    alert("Fill all details");
+  if(name=="" || mobile=="" || address==""){
+    alert("Please fill all details");
     return;
   }
 
-  const msg = encodeURIComponent(
-    "NEW ORDER\n\nProduct: "+product+
-    "\nName: "+name+
-    "\nMobile: "+mobile+
-    "\nAddress: "+address
-  );
-
-  window.open("https://wa.me/94712257210?text="+msg);
-  closeForm();
-}
-
-function scrollToShop(){
-  document.getElementById("shop").scrollIntoView({behavior:"smooth"});
+  let msg = `🛒 NEW ORDER%0A%0A📦 Product: ${selectedProduct}%0A👤 Name: ${name}%0A📞 Mobile: ${mobile}%0A🏠 Address: ${address}`;
+  let whatsappURL = `https://wa.me/94712257210?text=${msg}`;
+  window.open(whatsappURL, "_blank");
 }
 </script>
 
 </body>
 </html>
-
